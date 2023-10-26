@@ -1,0 +1,11 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/health_db
+    username: postgres
+    password: abcd1234
+    driverClassName: org.postgresql.Driver
+  jpa:
+    properties:
+      hibernate:
+        default_schema: public
+        dialect: org.hibernate.dialect.PostgreSQLDialect

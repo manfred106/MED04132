@@ -1,0 +1,21 @@
+version: '3'
+services:
+  observation-db:
+    image: observation-db
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_DB: health_db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: abcd1234
+
+  observation-app:
+    image: observation-app
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://observation-db:5432/health_db
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: abcd1234
+    depends_on:
+      - observation-db
